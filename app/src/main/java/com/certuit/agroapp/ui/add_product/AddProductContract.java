@@ -22,8 +22,8 @@ public interface AddProductContract {
 
         void getCrops();
 
-        void createProduct(int cropId, int quantity, String sowingDate, String harvestDate,
-                           String status, int unit, String description, float price);
+        void createProduct(int cropId, String quantity, String sowingDate, String harvestDate,
+                           String status, int unit, String description, String price);
 
         Context getAppContext();
 

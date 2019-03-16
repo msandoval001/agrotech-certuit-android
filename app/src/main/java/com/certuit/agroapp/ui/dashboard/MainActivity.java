@@ -8,9 +8,11 @@ import android.view.View;
 import com.certuit.agroapp.R;
 import com.certuit.agroapp.data.model.Notification;
 import com.certuit.agroapp.ui.add_product.AddProductFragment;
-import com.certuit.agroapp.ui.buyers.BuyersFragment;
+import com.certuit.agroapp.ui.buyers.detail.BuyerDetailFragment;
+import com.certuit.agroapp.ui.buyers.list.BuyersFragment;
 import com.certuit.agroapp.ui.notification.NotificationFragment;
 import com.certuit.agroapp.ui.productor_home.landing.HomeFragment;
+import com.certuit.agroapp.ui.sale_made.SaleMadeFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -68,7 +70,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onNotificationClick(Notification notification) {
                         switch (notification.getNotificationType()) {
                             case BUYER:
-                                loadFragment(new BuyersFragment());
+                                BuyersFragment buyersFragment = new BuyersFragment();
+                                buyersFragment.setListener(user -> {
+                                    BuyerDetailFragment buyerDetailFragment = new BuyerDetailFragment();
+                                    Bundle args = new Bundle();
+                                    args.putParcelable("user", user);
+                                    buyerDetailFragment.setArguments(args);
+                                    loadFragment(buyerDetailFragment);
+                                });
+                                loadFragment(buyersFragment);
+                                break;
+                            case SALE_MADE:
+                                SaleMadeFragment saleMadeFragment = new SaleMadeFragment();
+                                loadFragment(saleMadeFragment);
                                 break;
                             default:
                         }

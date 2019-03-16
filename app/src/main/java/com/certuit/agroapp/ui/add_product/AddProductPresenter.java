@@ -5,6 +5,7 @@ import android.content.Context;
 import com.certuit.agroapp.data.manager.DataManager;
 import com.certuit.agroapp.data.model.Crop;
 import com.certuit.agroapp.data.model.GenericResponse;
+import com.certuit.agroapp.util.DateUtils;
 import com.certuit.agroapp.util.NetworkUtil;
 import com.certuit.agroapp.util.ViewCommonFunctions;
 
@@ -54,11 +55,12 @@ public class AddProductPresenter implements AddProductContract.Presenter {
 
     // unidad 0 = caja 1 = toneladas
     @Override
-    public void createProduct(int cropId, int quantity, String sowingDate, String harvestDate,
-                              String status, int unit, String description, float price) {
+    public void createProduct(int cropId, String quantity, String sowingDate, String harvestDate,
+                              String status, int unit, String description, String price) {
         if (NetworkUtil.checkInternetConnection(getAppContext())) {
-            Observable<GenericResponse> observable = dataManager.createProduct(cropId, quantity, sowingDate,
-                    harvestDate, status, unit, description);
+            Observable<GenericResponse> observable = dataManager.createProduct(cropId, Integer.parseInt(quantity),
+                    DateUtils.getDateFormat(sowingDate), DateUtils.getDateFormat(harvestDate),
+                    status, unit, description, Float.parseFloat(price));
             observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Subscriber<GenericResponse>() {
                         @Override

@@ -21,7 +21,7 @@
     <string name="send">Enviar</string>
     <string name="error">Error</string>
     <string name="notice">Aviso</string>
-    <string name="unknown_error">Ha ocurrido un error, si persiste comunícate a la oficinas del SNTE Sección 2.</string>
+    <string name="unknown_error">No se pudo recuperar la información, intente de nuevo más tarde.</string>
     <string name="no_internet">No se pudo conectar con los servicios necesarios. Revise su conexión a Internet.</string>
     <string name="navigation_drawer_open">Abrir navigation drawer</string>
     <string name="navigation_drawer_close">Cerrar navigation drawer</string>

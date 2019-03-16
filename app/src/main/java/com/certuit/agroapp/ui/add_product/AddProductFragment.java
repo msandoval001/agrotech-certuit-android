@@ -13,6 +13,7 @@ import android.widget.DatePicker;
 
 import com.certuit.agroapp.R;
 import com.certuit.agroapp.data.model.Crop;
+import com.certuit.agroapp.util.ViewCommonFunctions;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
@@ -126,9 +127,10 @@ public class AddProductFragment extends Fragment implements AddProductContract.V
     @OnClick(R.id.addButton)
     public void addAction() {
         presenter.createProduct(crops.get(productTypesSpinner.getSelectedItemPosition()).getId(),
-                Integer.parseInt(quantity.toString().trim()), sowingDate.toString().trim(), harvestDate.toString().trim(),
-                status.toString().trim(), quantityTypesSpinner.getSelectedItemPosition(),
-                description.toString().trim(), Float.parseFloat(price.toString().trim()));
+                quantity.getText().toString().trim(), sowingDate.getText().toString().trim(),
+                harvestDate.getText().toString().trim(), status.getText().toString().trim(),
+                quantityTypesSpinner.getSelectedItemPosition(), description.getText().toString().trim(),
+                price.getText().toString().trim());
     }
 
 //    @OnClick(R.id.textInputLayout1)
@@ -182,6 +184,7 @@ public class AddProductFragment extends Fragment implements AddProductContract.V
         harvestDate.setText("");
         status.setText("");
         description.setText("");
+        ViewCommonFunctions.showShortToast(getAppContext(), "Producto agregado exitosamente");
     }
 
     @Override

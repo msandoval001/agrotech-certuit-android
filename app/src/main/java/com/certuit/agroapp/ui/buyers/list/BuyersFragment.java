@@ -1,4 +1,4 @@
-package com.certuit.agroapp.ui.buyers;
+package com.certuit.agroapp.ui.buyers.list;
 
 
 import android.os.Bundle;
@@ -29,10 +29,15 @@ public class BuyersFragment extends Fragment {
     @BindView(R.id.recyclerView)
     protected RecyclerView recyclerView;
 
+    private BuyersClickListener listener;
+
     public BuyersFragment() {
         // Required empty public constructor
     }
 
+    public void setListener(BuyersClickListener listener) {
+        this.listener = listener;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +57,12 @@ public class BuyersFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         BuyerAdapter adapter = new BuyerAdapter(getDummyUsers());
+        adapter.setListener(new BuyerAdapter.BuyerClickListener() {
+            @Override
+            public void onBuyerClick(User user) {
+                listener.onBuyerClick(user);
+            }
+        });
         recyclerView.setAdapter(adapter);
     }
 
@@ -71,5 +82,9 @@ public class BuyersFragment extends Fragment {
         users.add(user5);
 
         return users;
+    }
+
+    public interface BuyersClickListener {
+        void onBuyerClick(User user);
     }
 }

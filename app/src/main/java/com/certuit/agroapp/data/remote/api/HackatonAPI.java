@@ -1,6 +1,7 @@
 package com.certuit.agroapp.data.remote.api;
 
 import com.certuit.agroapp.data.model.Crop;
+import com.certuit.agroapp.data.model.Demand;
 import com.certuit.agroapp.data.model.GenericResponse;
 import com.certuit.agroapp.data.model.Product;
 
@@ -21,10 +22,14 @@ public interface HackatonAPI {
                                               @Query("fecha_siembra") String sowingDate,
                                               @Query("fecha_cosecha") String harvestDate,
                                               @Query("estatus") String status, @Query("id_productor") int producerId,
-                                              @Query("unidad") int unit, @Query("descripcion") String description);
+                                              @Query("unidad") int unit, @Query("descripcion") String description,
+                                              @Query("precio_unidad") float price);
 
     @GET("productos")
     Observable<List<Product>> getProducts();
+
+    @GET("demandas")
+    Observable<List<Demand>> getDemands();
 
 
 }

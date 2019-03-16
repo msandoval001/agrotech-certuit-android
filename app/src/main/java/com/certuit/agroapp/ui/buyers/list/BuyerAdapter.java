@@ -1,4 +1,4 @@
-package com.certuit.agroapp.ui.buyers;
+package com.certuit.agroapp.ui.buyers.list;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +19,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.BuyerViewHolder> {
 
     private List<User> users;
+    private BuyerClickListener listener;
 
     public BuyerAdapter(List<User> users) {
         this.users = users;
+    }
+
+    public void setListener(BuyerClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -35,6 +40,7 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.BuyerViewHol
     @Override
     public void onBindViewHolder(@NonNull BuyerViewHolder holder, int position) {
         holder.assignateData(users.get(position));
+        holder.itemView.setOnClickListener(v -> listener.onBuyerClick(users.get(position)));
     }
 
     @Override
@@ -64,5 +70,9 @@ public class BuyerAdapter extends RecyclerView.Adapter<BuyerAdapter.BuyerViewHol
             buyerLocation.setText("Mexicali");
             buyerRequest.setText("20 cajas de Naranjas");
         }
+    }
+
+    public interface BuyerClickListener {
+        void onBuyerClick(User user);
     }
 }

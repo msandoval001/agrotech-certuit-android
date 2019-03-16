@@ -1,12 +1,14 @@
 package com.certuit.agroapp.ui.productor_home.list.demand;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.certuit.agroapp.R;
+import com.certuit.agroapp.data.model.Demand;
 import com.certuit.agroapp.data.model.Product;
 import com.certuit.agroapp.ui.productor_home.list.products.MyProductsAdapter;
 
@@ -24,10 +26,12 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DemandFragment extends Fragment {
+public class DemandFragment extends Fragment implements DemandsContract.View {
 
     @BindView(R.id.recyclerView)
     protected RecyclerView recyclerView;
+
+    private DemandsPresenter presenter;
 
 
     public DemandFragment() {
@@ -41,6 +45,8 @@ public class DemandFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_demand, container, false);
 
+        presenter = new DemandsPresenter(this);
+
         ButterKnife.bind(this, view);
 
         return view;
@@ -52,10 +58,18 @@ public class DemandFragment extends Fragment {
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-//        DemandAdapter adapter = new DemandAdapter(getDummyProducts());
-//        recyclerView.setAdapter(adapter);
+        presenter.getDemands();
     }
 
 
+    @Override
+    public void showDemands(List<Demand> demands) {
+        DemandAdapter adapter = new DemandAdapter(demands);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public Context getAppContext() {
+        return getContext();
+    }
 }

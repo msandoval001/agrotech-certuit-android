@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.certuit.agroapp.R;
-import com.certuit.agroapp.data.model.Product;
+import com.certuit.agroapp.data.model.Demand;
 
 import java.util.List;
 
@@ -18,9 +18,9 @@ import butterknife.ButterKnife;
 
 public class DemandAdapter extends RecyclerView.Adapter<DemandAdapter.DemandViewHolder> {
 
-    private List<Product> products;
+    private List<Demand> products;
 
-    public DemandAdapter(List<Product> products) {
+    public DemandAdapter(List<Demand> products) {
         this.products = products;
     }
 
@@ -56,9 +56,9 @@ public class DemandAdapter extends RecyclerView.Adapter<DemandAdapter.DemandView
             ButterKnife.bind(this, itemView);
         }
 
-        void assignateData(Product product) {
+        void assignateData(Demand product) {
             productName.setText(product.getCrop().getName());
-            productDesc.setText(product.getDescription());
+            productDesc.setText(product.getQuantity() + " Caja(s)");
         }
     }
 }
