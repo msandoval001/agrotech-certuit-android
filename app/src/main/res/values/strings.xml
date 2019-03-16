@@ -1,3 +1,57 @@
 <resources>
-    <string name="app_name">AgroApp</string>
+    <string name="app_name">Augura</string>
+
+    <!--User Data-->
+    <string name="login">Login</string>
+    <string name="token">token</string>
+    <string name="refresh_token">refreshToken</string>
+    <string name="sign_up_token">My@874BmKmaQRf-!</string>
+    <string name="user_id">userId</string>
+    <string name="user_username">username</string>
+    <string name="user_role">role</string>
+    <string name="user_full_real_name">Real name</string>
+    <string name="user_profile_pic">profile pic</string>
+
+    <!-- General Texts -->
+    <string name="error_field_required">Este campo es requerido</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="progress_wait">Espere…</string>
+    <string name="understood">Entendido</string>
+    <string name="send">Enviar</string>
+    <string name="error">Error</string>
+    <string name="notice">Aviso</string>
+    <string name="unknown_error">Ha ocurrido un error, si persiste comunícate a la oficinas del SNTE Sección 2.</string>
+    <string name="no_internet">No se pudo conectar con los servicios necesarios. Revise su conexión a Internet.</string>
+    <string name="navigation_drawer_open">Abrir navigation drawer</string>
+    <string name="navigation_drawer_close">Cerrar navigation drawer</string>
+    <string name="no_login_text">Inicie sesión para consultar este contenido</string>
+
+    <!-- LoginActivity -->
+    <string name="login_email_hint">Correo Electrónico</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_action">Iniciar Sesión</string>
+    <string name="login_register_hint">¿No tienes cuenta? Crea una aquí</string>
+    <string name="login_lost_password">¿Perdió su contraseña?</string>
+    <string name="login_progress">Iniciando sesión…</string>
+    <string name="login_invalid_email">Correo no válido</string>
+
+    <!--Navigation-->
+    <string name="nav_account">Mi Cuenta</string>
+    <string name="nav_home">Inicio</string>
+    <string name="nav_my_orders">Mis Ventas</string>
+    <string name="nav_payments">Cuentas de Depósito</string>
+    <string name="nav_my_addresses">Mis Direcciones</string>
+    <string name="nav_logout">Cerrar Sesión</string>
+    <string name="nav_help">Ayuda</string>
+
+
+    <string-array name="quantity_type">
+        <item>Ton</item>
+        <item>Caja</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
